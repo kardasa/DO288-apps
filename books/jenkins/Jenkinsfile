@@ -109,7 +109,7 @@ pipeline {
 		script {
 		  openshift.withCluster(){
 		  	openshift.withProject(){
-				openshfift.tag("${DEV_PROJECT}/books:latest",${STAGE_PROJECT}/books:stage)
+				openshfift.tag("${DEV_PROJECT}/books:latest","${STAGE_PROJECT}/books:stage")
 			}
 		  }
 		}
