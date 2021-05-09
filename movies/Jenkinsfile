@@ -95,7 +95,7 @@ pipeline {
         stage('Wait for deployment in DEV env') {
             //TODO: Watch deployment until pod is in 'Running' state
 	    steps {
-              scripts {
+              script {
 		openshift.withCluster(){
 		   openshift.withProject("${DEV_PROJECT}"){
                         def deployment = openshift.selector("dc", "${APP_NAME}").rollout()
@@ -113,7 +113,7 @@ pipeline {
                 timeout(time: 60, unit: 'MINUTES') {
                     input message: "Promote to Staging?"
                 }
-                scripts{
+                script{
                     openshift.withCluster() {
                     // TODO: Tag the ${APP_NAME}:latest image stream in the dev env as ${APP_NAME}:stage in staging
 			openshift.tag("${DEV_PROJECT}/${APP_NAME}:latest","${STAGE_PROJECT}/${APP_NAME}:stage")
