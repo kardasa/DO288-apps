@@ -62,7 +62,7 @@ pipeline {
                 //TODO: Create a new app and expose the service
 		sh '''
 			oc project ${DEV_PROJECT}
-			oc new-app --name ${APP_NAME} --as-deployment-config -i nodejs:12 ${APP_GIT_URL}#custom-pipeline2 --build_env=npm_config_registry=${NEXUS_SERVER}/repository/nodejs --context-dir=${APP_NAME
+			oc new-app --name ${APP_NAME} --as-deployment-config -i nodejs:12 "${APP_GIT_URL}#custom-pipeline2" --build_env=npm_config_registry=${NEXUS_SERVER}/repository/nodejs --context-dir=${APP_NAME}
 			oc expose service ${APP_NAME}
 		   '''
             }
