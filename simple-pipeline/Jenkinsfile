@@ -33,7 +33,7 @@ pipeline {
         // TODO: ADD AN APPROVAL STAGE
 	stage("approval stage"){
 		steps {
-			input massage: "Approve me or die like a worm!!!"
+			input message: "Approve me or die like a worm!!!"
 		}
 	}
         stage('stage 3') {
